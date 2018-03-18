@@ -16,7 +16,7 @@ pip3 freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U
 python3 wechat.py
 
 # Run in background
-# nohup python3 wechat.py > log.txt 2>&1&
+nohup python3 wechat.py > log.txt 2>&1&
 # nohup python3 wechat.py &
 ```
 
