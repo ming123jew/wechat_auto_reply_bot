@@ -1,5 +1,8 @@
 import itchat
 import requests
+import threading
+import time
+import random
 
 from itchat.content import *
 
@@ -22,5 +25,19 @@ def group_reply(msg):
         group_reply_text = reply_text + '\n\n' + '@' + msg['ActualNickName'] + '\u2005'
         itchat.send(group_reply_text, msg['FromUserName'])
 
+# 定时发送消息
+def send_message_task(target, min_sec, max_sec):
+    while True:
+        delay = random.randint(min_sec, max_sec)
+        time.sleep(delay)
+        time_str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+        msg = 'Delay: ' + str(delay) + 's\n' + 'Time: ' + time_str
+        itchat.send(msg, toUserName=target)
+
 itchat.auto_login(hotReload=True, enableCmdQR=True)
+
+task = threading.Thread(target=send_message_task, args=('filehelper', 300, 600))
+task.setDaemon(True)
+task.start()
+
 itchat.run(debug=True)
