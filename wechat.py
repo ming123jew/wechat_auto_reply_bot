@@ -5,9 +5,9 @@ from itchat.content import *
 
 reply_content = '''这条消息是自动回复的。
 
-出于一些说了你也不懂你懂你也不会来问也懒得解释的原因。为了回归通信的本质，我花都陈冠希决定退出娱乐圈，微信已经很少用了。如果你有急事，可以给我发电报或邮件。
+微信已经弃用了，如果你有急事，可以给我发电报或者邮件。
 
-Telegram ID: @pexcn
+Telegram: @pexcn
 E-mail: pexcn97@gmail.com'''
 
 # 回复好友消息
