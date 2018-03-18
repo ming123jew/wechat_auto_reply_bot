@@ -3,7 +3,7 @@ import requests
 
 from itchat.content import *
 
-reply_content = '''这条消息是自动回复的。
+reply_text = '''这条消息是自动回复的。
 
 微信已经弃用了，如果你有急事，可以给我发电报或者邮件。
 
@@ -12,15 +12,15 @@ E-mail: pexcn97@gmail.com'''
 
 # 回复好友消息
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING, PICTURE, RECORDING, VOICE, ATTACHMENT, VIDEO])
-def text_reply(msg):
-    itchat.send(reply_content, msg['FromUserName'])
+def chat_reply(msg):
+    itchat.send(reply_text, msg['FromUserName'])
 
 # 回复群聊 @ 我的消息
 @itchat.msg_register(TEXT, isGroupChat=True)
-def text_reply(msg):
+def group_reply(msg):
     if msg['IsAt']:
-        group_reply_content = reply_content + '\n\n' + '@' + msg['ActualNickName'] + '\u2005'
-        itchat.send(group_reply_content, msg['FromUserName'])
+        group_reply_text = reply_text + '\n\n' + '@' + msg['ActualNickName'] + '\u2005'
+        itchat.send(group_reply_text, msg['FromUserName'])
 
 itchat.auto_login(hotReload=True, enableCmdQR=True)
 itchat.run(debug=True)
