@@ -43,4 +43,4 @@ task.setDaemon(True)
 task.start()
 
 # 阻塞线程，保持微信登录
-itchat.run(debug=True)
+itchat.run(debug=False)
