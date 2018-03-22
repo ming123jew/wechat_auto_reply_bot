@@ -34,10 +34,13 @@ def send_message_task(target, min_sec, max_sec):
         msg = 'Delay: ' + str(delay) + 's\n' + 'Time: ' + time_str
         itchat.send(msg, toUserName=target)
 
+# 微信登录
 itchat.auto_login(hotReload=True, enableCmdQR=True)
 
+# 开新线程随机发消息来尝试保持登录状态
 task = threading.Thread(target=send_message_task, args=('filehelper', 300, 600))
 task.setDaemon(True)
 task.start()
 
+# 阻塞线程，保持微信登录
 itchat.run(debug=True)
