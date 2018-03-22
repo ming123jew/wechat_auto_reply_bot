@@ -19,11 +19,27 @@ filehelper: 文件传输助手
 """
 ignore_list = ['weixin', 'filehelper']
 
+"""
+来自公众号自动回复的消息片段列表
+主要用来处理某些公众号 (比如：微信支付) 给你发消息造成死循环的问题
+"""
+msg_snippet_list = [
+    '有什么可以帮到你', '需要咨询什么', '一句话描述',
+    '你还有什么问题', '第一时间处理', '微信支付小助手',
+    '小助手会继续努力', '零钱如何提现', '怎么绑定银行卡'
+]
+
 # 回复好友消息
 @itchat.msg_register([TEXT, MAP, CARD, NOTE, SHARING, PICTURE, RECORDING, VOICE, ATTACHMENT, VIDEO])
 def chat_reply(msg):
-    if msg['FromUserName'] not in ignore_list:
-        itchat.send(reply_text, msg['FromUserName'])
+    if msg['FromUserName'] in ignore_list:
+        return
+    for i in range(len(msg_snippet_list)):
+        if msg_snippet_list[i] in msg['Content']:
+            ignore_list.append(msg['FromUserName'])
+            print('current ignore list: ' + str(ignore_list))
+            return
+    itchat.send(reply_text, msg['FromUserName'])
 
 # 回复群聊 @ 我的消息
 @itchat.msg_register(TEXT, isGroupChat=True)
