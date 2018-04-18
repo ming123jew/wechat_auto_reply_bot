@@ -80,6 +80,7 @@ task.start()
 add_ignore_list()
 add_ignore_list('妈妈')
 add_ignore_list('陈家亮')
+add_ignore_list('姜璇')
 
 print('ignore list: ' + str(ignore_list))
 
