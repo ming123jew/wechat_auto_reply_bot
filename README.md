@@ -2,7 +2,7 @@
 
 WeChat was deprecated. this repo just myself auto reply bot.
 
-## How to use?
+## Usage
 
 ```bash
 # Install python and dependences
@@ -19,3 +19,8 @@ python3 wechat.py
 nohup python3 wechat.py > log.txt 2>&1&
 # nohup python3 wechat.py &
 ```
+
+## Issues
+
+- 忽略微信支付好像失效了
+- 新添加好友会出问题
