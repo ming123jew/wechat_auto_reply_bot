@@ -8,10 +8,10 @@ from itchat.content import *
 
 reply_text = '''这条消息是自动回复的。
 
-微信已经弃用了，如果你有急事，可以给我发电报或者邮件。
+如果有急事，可以给我发电报或者邮件。
 
 Telegram: @pexcn
-E-mail: pexcn97@gmail.com'''
+E-mail: i@pexcn.me / pexcn97@gmail.com'''
 
 """
 weixin: 微信团队
